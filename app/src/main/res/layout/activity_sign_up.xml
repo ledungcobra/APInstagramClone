@@ -6,14 +6,84 @@
     android:layout_height="match_parent"
     tools:context=".SignUp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="tappedOnHelloWorld"
-        android:text="Hello World!"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
+        <EditText
+            android:id="@+id/edtNameKickBoxer"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:ems="10"
+            android:hint="Please enter the name of kickboxer"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/edtThePunchSpeed"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:ems="10"
+            android:hint="Please enter the punch speed"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/edtPunchPower"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:ems="10"
+            android:hint="Enter the punch power"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/edtKickSpeed"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:ems="10"
+            android:hint="Enter the kick speed"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/edtKickPower"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:ems="10"
+            android:hint="Enter the kick power"
+            android:inputType="textPersonName" />
+
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="50dp"
+            android:text="Save kick boxer to the server" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Get data from server"
+            android:gravity="center_horizontal"
+            android:layout_marginHorizontal="50dp"
+            android:textColor="#ff0000"
+            android:layout_marginTop="50dp"
+            android:textSize="30sp"
+            android:id="@+id/txtGetData"
+
+
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:textSize="20sp"
+            android:text="Go to next Activity"
+            android:id="@+id/btnGoToNextActivity"
+
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

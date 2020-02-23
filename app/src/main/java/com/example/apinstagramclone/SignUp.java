@@ -1,5 +1,6 @@
 package com.example.apinstagramclone;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -8,10 +9,14 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
+import com.parse.ParseQuery;
 import com.parse.SaveCallback;
 import com.shashank.sony.fancytoastlib.FancyToast;
+
+import java.util.List;
 
 public class SignUp extends AppCompatActivity implements View.OnClickListener {
 
@@ -19,6 +24,12 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
     private Button btnSave;
 
     private TextView txtGetData;
+
+    String allObjectNames;
+
+    Button btnGoToNextActivity;
+
+
 
 
     @Override
@@ -35,25 +46,46 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
 
         txtGetData = findViewById(R.id.txtGetData);
 
-//        txtGetData.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                ParseQuery<ParseObject> parseQuery = ParseQuery.getQuery("Boxer");
-//                parseQuery.getInBackground("ZHDymXFgME", new GetCallback<ParseObject>() {
-//                    @Override
-//                    public void done(ParseObject object, ParseException e) {
-//                        if(object!=null&&e==null){
-//                            txtGetData.setText(object.get("name")+"");
-//
-//                        }
-//
-//                    }
-//                });
-//            }
-//        });
+        btnGoToNextActivity = findViewById(R.id.btnGoToNextActivity);
+
+
+
+
+
+        txtGetData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                allObjectNames = "";
+                final ParseQuery<ParseObject> allParseQuery = ParseQuery.getQuery("Boxer");
+                //Conditions
+                allParseQuery.whereGreaterThan("thePunchPower",42343);
+
+                allParseQuery.findInBackground(new FindCallback<ParseObject>() {
+                    @Override
+                    public void done(List<ParseObject> objects, ParseException e) {
+                        if(e == null && objects!=null){
+                            if(objects.size()>0){
+
+                                for(ParseObject object: objects){
+
+                                    allObjectNames += object.get("theName")+"\n";
+
+
+                                }
+
+                                FancyToast.makeText(SignUp.this,allObjectNames,FancyToast.SUCCESS,FancyToast.LENGTH_SHORT,false).show();
+
+                            }
+                        }
+                    }
+                });
+
+            }
+        });
 
 
         btnSave.setOnClickListener(SignUp.this);
+        btnGoToNextActivity.setOnClickListener(SignUp.this );
 
 
     }
@@ -78,7 +110,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
                             if (e == null) {
                                 FancyToast.makeText(SignUp.this, "Done save to" + boxer.get("theName").toString(), FancyToast.LENGTH_LONG, FancyToast.SUCCESS, false).show();
                             }else{
-                              
+
 
 
 
@@ -90,6 +122,13 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
 
                 }
                 break;
+            case R.id.btnGoToNextActivity:
+
+                Intent intent  = new Intent(SignUp.this,SignUpLoginActivity.class);
+                startActivity(intent);
+
+                break;
+
 
             default:
                 throw new IllegalStateException("Unexpected value: " + v.getId());

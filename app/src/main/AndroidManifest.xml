@@ -10,6 +10,7 @@
         android:supportsRtl="true"
         android:name=".App"
         android:theme="@style/AppTheme">
+
         <activity android:name=".SignUp">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,6 +18,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".SignUpLoginActivity"/>
+
         <meta-data
             android:name="com.parse.SERVER_URL"
             android:value="@string/back4app_server_url" />

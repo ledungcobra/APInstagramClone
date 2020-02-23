@@ -31,6 +31,7 @@
             android:layout_marginHorizontal="30dp"
             android:layout_marginTop="20dp"
             android:hint="Enter user password"
+            android:inputType="textPassword"
             android:id="@+id/edtUserPasswordSignUp"
 
             />
@@ -40,7 +41,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="50dp"
             android:paddingHorizontal="20dp"
-            android:text="LOGIN"
+            android:text="SIGN UP"
             android:id="@+id/btnSignUp"
             />
         <EditText
@@ -61,6 +62,7 @@
             android:layout_marginTop="20dp"
             android:hint="Enter user password"
             android:id="@+id/edtUserPasswordLogin"
+            android:inputType="textPassword"
 
             />
         <Button

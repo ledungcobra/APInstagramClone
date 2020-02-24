@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -57,7 +58,9 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
         btnSignUp.setOnClickListener(this);
 
         if(ParseUser.getCurrentUser()!=null) {
-            ParseUser.getCurrentUser().logOut();
+            Log.i("Login","Executed");
+
+           transitionToSocialMediaActivity();
         }
 
 
@@ -107,6 +110,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
                         if(e == null){
 
                             FancyToast.makeText(SignUp.this,appUser.getUsername(),FancyToast.LENGTH_SHORT,FancyToast.SUCCESS,false).show();
+                            transitionToSocialMediaActivity();
 
                         }else{
                             FancyToast.makeText(SignUp.this,"There was an error: "+e.getMessage(),FancyToast.LENGTH_SHORT,FancyToast.ERROR,false).show();
@@ -134,6 +138,12 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
 
         }
 
+
+    }
+
+    private void transitionToSocialMediaActivity(){
+        Intent intent = new Intent(SignUp.this,SocialMediaActivity.class);
+        startActivity(intent);
 
     }
 }

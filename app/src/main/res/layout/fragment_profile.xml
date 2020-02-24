@@ -5,6 +5,77 @@
     android:layout_height="match_parent"
     tools:context=".ProfileTab">
 
-    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
 
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/edtProfileName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="Please enter profile name ..."
+            />
+
+        <EditText
+            android:id="@+id/edtProfileBio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="Please enter your biography..." />
+
+        <EditText
+            android:id="@+id/edtProfileProfession"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            tools:layout_editor_absoluteX="115dp"
+            tools:layout_editor_absoluteY="16dp"
+            android:hint="Please enter your profession"/>
+
+        <EditText
+            android:id="@+id/edtProfileHobbies"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            tools:layout_editor_absoluteX="79dp"
+            tools:layout_editor_absoluteY="86dp"
+            android:hint="Please enter your hobbies..."
+            />
+
+        <EditText
+            android:id="@+id/edtProfileFavoriteSport"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            tools:layout_editor_absoluteX="115dp"
+            tools:layout_editor_absoluteY="155dp"
+            android:hint="Please enter your favorite sport..."/>
+
+        <Button
+            android:layout_marginTop="30dp"
+
+            android:layout_gravity="center"
+            android:id="@+id/btnUpdateInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="UPDATE INFO" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

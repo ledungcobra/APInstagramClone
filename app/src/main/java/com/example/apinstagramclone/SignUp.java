@@ -20,11 +20,9 @@ import com.shashank.sony.fancytoastlib.FancyToast;
 
 public class SignUp extends AppCompatActivity implements View.OnClickListener {
 
-    private EditText edtUserName,edtPassword,edtEmail;
+    private EditText edtUserName, edtPassword, edtEmail;
 
-    private Button btnLogIn,btnSignUp;
-
-
+    private Button btnLogIn, btnSignUp;
 
 
     @Override
@@ -41,7 +39,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
         edtPassword.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if(keyCode == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_DOWN){
+                if (keyCode == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_DOWN) {
 
                     onClick(btnSignUp);
 
@@ -57,37 +55,33 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
         btnLogIn.setOnClickListener(this);
         btnSignUp.setOnClickListener(this);
 
-        if(ParseUser.getCurrentUser()!=null) {
-            Log.i("Login","Executed");
+        if (ParseUser.getCurrentUser() != null) {
+            Log.i("Login", "Executed");
 
-           transitionToSocialMediaActivity();
+            transitionToSocialMediaActivity();
         }
-
-
-
-
 
 
     }
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.btnLogin_SignUpActivity:
 
-                Intent intent = new Intent(SignUp.this,LoginActivity.class);
+                Intent intent = new Intent(SignUp.this, LoginActivity.class);
                 startActivity(intent);
 
 
                 break;
             case R.id.btnSignUp_SignUpActivity:
 
-                if(edtUserName.getText().toString().equals("")||
-                        edtEmail.getText().toString().equals("")||
-                        edtPassword.getText().toString().equals("")){
-                    FancyToast.makeText(SignUp.this,"Missing value"
-                            ,FancyToast.LENGTH_SHORT,FancyToast.WARNING,false).show();
-                    return ;
+                if (edtUserName.getText().toString().equals("") ||
+                        edtEmail.getText().toString().equals("") ||
+                        edtPassword.getText().toString().equals("")) {
+                    FancyToast.makeText(SignUp.this, "Missing value"
+                            , FancyToast.LENGTH_SHORT, FancyToast.WARNING, false).show();
+                    return;
 
                 }
 
@@ -97,7 +91,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
                 appUser.setPassword(edtPassword.getText().toString());
 
                 final ProgressDialog progressDialog = new ProgressDialog(SignUp.this);
-                progressDialog.setMessage("Signing up "+edtUserName.getText());
+                progressDialog.setMessage("Signing up " + edtUserName.getText());
 
 
                 progressDialog.show();
@@ -107,13 +101,13 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
                     @Override
                     public void done(ParseException e) {
 
-                        if(e == null){
+                        if (e == null) {
 
-                            FancyToast.makeText(SignUp.this,appUser.getUsername(),FancyToast.LENGTH_SHORT,FancyToast.SUCCESS,false).show();
+                            FancyToast.makeText(SignUp.this, appUser.getUsername(), FancyToast.LENGTH_SHORT, FancyToast.SUCCESS, false).show();
                             transitionToSocialMediaActivity();
 
-                        }else{
-                            FancyToast.makeText(SignUp.this,"There was an error: "+e.getMessage(),FancyToast.LENGTH_SHORT,FancyToast.ERROR,false).show();
+                        } else {
+                            FancyToast.makeText(SignUp.this, "There was an error: " + e.getMessage(), FancyToast.LENGTH_SHORT, FancyToast.ERROR, false).show();
 
 
                         }
@@ -130,20 +124,25 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
 
     }
 
-    public void rootLayoutTapped(View v){
+    public void rootLayoutTapped(View v) {
         try {
             InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
             inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
-        }catch (Exception e){
+        } catch (Exception e) {
 
         }
 
 
     }
 
-    private void transitionToSocialMediaActivity(){
-        Intent intent = new Intent(SignUp.this,SocialMediaActivity.class);
-        startActivity(intent);
+    private void transitionToSocialMediaActivity() {
+        try {
+            Intent intent = new Intent(SignUp.this, SocialMediaActivity.class);
+            startActivity(intent);
+        } catch (Exception e) {
+
+        }
+
 
     }
 }

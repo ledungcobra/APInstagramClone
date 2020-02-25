@@ -12,8 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         >
-<!--        <include android:id="@+id/myToolBar"-->
-<!--            layout="@layout/my_toolbar"/>-->
+        <include android:id="@+id/myToolBar"
+            layout="@layout/my_toolbar"/>
         <com.google.android.material.tabs.TabLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

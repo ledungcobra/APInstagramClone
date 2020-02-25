@@ -24,7 +24,7 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class UserTab extends Fragment {
+public class UsersTab extends Fragment {
 
     private ListView listView;
     private ArrayList arrayList;
@@ -34,7 +34,7 @@ public class UserTab extends Fragment {
 
 
 
-    public UserTab() {
+    public UsersTab() {
         // Required empty public constructor
     }
 

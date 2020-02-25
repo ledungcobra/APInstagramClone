@@ -24,7 +24,7 @@ public class TabAdapter extends FragmentPagerAdapter {
 
             case 1:
 
-                return new UserTab();
+                return new UsersTab();
 
 
             case 2:

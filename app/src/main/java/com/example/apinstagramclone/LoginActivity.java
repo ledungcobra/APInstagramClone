@@ -52,7 +52,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         btnSignUp.setOnClickListener(this);
 
         if (ParseUser.getCurrentUser() != null) {
+
            transitionToSocialMediaActivity();
+           finish();
+
 
         }
 
@@ -83,7 +86,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                 break;
             case R.id.btnSignUp_LoginActivity:
-                finish();
+                Intent intent = new Intent(LoginActivity.this,SignUp.class);
+                startActivity(intent);
+
                 break;
         }
 

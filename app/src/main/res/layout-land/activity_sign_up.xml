@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/holo_orange_dark"
+    android:onClick="rootLayoutTapped"
+    tools:context=".SignUp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/holo_orange_dark"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+        <ImageView
+
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginHorizontal="20dp"
+
+
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/instagram" />
+
+        <EditText
+            android:id="@+id/edtEmailSignUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="70dp"
+            android:layout_marginTop="10dp"
+            android:ems="10"
+            android:hint="Please enter your email address"
+            android:inputType="textEmailAddress"
+            android:shadowColor="#000000"
+            android:textColorHint="#ffff" />
+
+        <EditText
+            android:id="@+id/edtUserNameSignUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="70dp"
+            android:ems="10"
+            android:hint="Please enter your user name"
+            android:inputType="textPersonName"
+
+            android:textColorHint="#ffff" />
+
+        <EditText
+            android:id="@+id/edtPasswordSignUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="70dp"
+            android:ems="10"
+            android:hint="Enter your password here"
+            android:inputType="textPassword"
+            android:textColorHint="#ffff" />
+
+        <Button
+            android:id="@+id/btnSignUp_SignUpActivity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="15dp"
+            android:background="#007678"
+            android:text="SIGN UP"
+            android:textColor="#ffff"
+            android:textSize="35sp"
+
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btnLogin_SignUpActivity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="#96BB00"
+            android:text="LOG IN"
+            android:textColor="#ffff"
+            android:textSize="35sp"
+            android:textStyle="bold" />
+
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

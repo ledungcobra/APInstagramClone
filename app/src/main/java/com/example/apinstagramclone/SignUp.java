@@ -58,6 +58,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
             Log.i("Login", "Executed");
 
             transitionToSocialMediaActivity();
+            finish();
         }
 
 

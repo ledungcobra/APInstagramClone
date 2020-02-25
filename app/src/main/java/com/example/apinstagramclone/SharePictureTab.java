@@ -3,6 +3,7 @@ package com.example.apinstagramclone;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -22,7 +23,14 @@ import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
+import com.parse.ParseException;
+import com.parse.ParseFile;
+import com.parse.ParseObject;
+import com.parse.ParseUser;
+import com.parse.SaveCallback;
 import com.shashank.sony.fancytoastlib.FancyToast;
+
+import java.io.ByteArrayOutputStream;
 
 
 /**
@@ -72,6 +80,67 @@ public class SharePictureTab extends Fragment implements View.OnClickListener {
                 break;
 
             case R.id.btnShareImage:
+
+                if(receivedImageBitmap!=null){
+
+                    if(!edtDescription.getText().equals("")){
+
+                        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                        receivedImageBitmap.compress(Bitmap.CompressFormat.PNG,100,byteArrayOutputStream);
+                        byte [] bytes = byteArrayOutputStream.toByteArray();
+                        ParseFile parseFile = new ParseFile("pic.png",bytes);
+                        ParseObject parseObject = new ParseObject("Photo");
+                        parseObject.put("picture",parseFile);
+                        parseObject.put("image_des",edtDescription.getText().toString());
+                        parseObject.put("username", ParseUser.getCurrentUser().getUsername().toString());
+
+                        final ProgressDialog progressDialog = new ProgressDialog(getContext());
+                        progressDialog.setMessage("Uploading ....");
+                        progressDialog.show();
+
+                        parseObject.saveInBackground(new SaveCallback() {
+                            @Override
+                            public void done(ParseException e) {
+
+                                if(e == null){
+
+                                FancyToast.makeText(getContext(),"Uploading is completed"
+                                        ,FancyToast.LENGTH_SHORT
+                                        ,FancyToast.SUCCESS
+                                        ,false).show();
+
+
+
+                                }else{
+
+                                    FancyToast.makeText(getContext(),e.getMessage()
+                                            ,FancyToast.LENGTH_SHORT
+                                            ,FancyToast.ERROR
+                                            ,false).show();
+
+
+                                }
+
+                                progressDialog.dismiss();
+
+                            }
+                        });
+
+
+                    }else{
+
+                        FancyToast.makeText(getContext(),"You must enter description",FancyToast.LENGTH_SHORT,FancyToast.WARNING,false).show();
+
+                    }
+
+
+                }else{
+                    //Toast.makeText(getContext(),"Must select image",Toast.LENGTH_SHORT).show();
+                    FancyToast.makeText(getContext(),"You must select the image", FancyToast.LENGTH_SHORT,FancyToast.WARNING,false).show();
+
+                }
+
+
                 break;
             default:
 

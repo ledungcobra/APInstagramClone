@@ -1,11 +1,13 @@
 package com.example.apinstagramclone;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -24,10 +26,10 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class UsersTab extends Fragment {
+public class UsersTab extends Fragment implements AdapterView.OnItemClickListener {
 
     private ListView listView;
-    private ArrayList arrayList;
+    private ArrayList<String> arrayList;
     private ArrayAdapter arrayAdapter;
 
 
@@ -46,8 +48,13 @@ public class UsersTab extends Fragment {
         View v =  inflater.inflate(R.layout.fragment_user_tab, container, false);
 
         listView  = v.findViewById(R.id.listView);
+        listView.setOnItemClickListener(UsersTab.this);
+
 
         arrayList = new ArrayList();
+
+
+
         arrayAdapter = new ArrayAdapter(getContext(),android.R.layout.simple_list_item_1,arrayList);
 
         final TextView txtLoadingUsers = v.findViewById(R.id.txtLoadingUsers);
@@ -110,4 +117,16 @@ public class UsersTab extends Fragment {
 
     }
 
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+        Intent intent = new Intent(getContext(),UsersPost.class);
+        intent.putExtra("username",arrayList.get(position));
+        startActivity(intent);
+
+
+
+
+
+    }
 }

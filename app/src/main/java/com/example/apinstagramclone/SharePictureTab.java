@@ -2,9 +2,9 @@ package com.example.apinstagramclone;
 
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -24,8 +24,6 @@ import androidx.fragment.app.Fragment;
 
 import com.shashank.sony.fancytoastlib.FancyToast;
 
-import static android.app.Activity.RESULT_OK;
-
 
 /**
  * A simple {@link Fragment} subclass.
@@ -35,6 +33,8 @@ public class SharePictureTab extends Fragment implements View.OnClickListener {
     private ImageView imgShare;
     private Button btnShareImage;
     private EditText edtDescription;
+    private Bitmap receivedImageBitmap;
+
 
 
     public SharePictureTab() {
@@ -114,18 +114,24 @@ public class SharePictureTab extends Fragment implements View.OnClickListener {
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == 2000){
-             if(resultCode == RESULT_OK){
+             if(resultCode == Activity.RESULT_OK){
                  try{
 
                      Uri selectedImage = data.getData();
-                     String [] fileColumnPath = {MediaStore.Images.Media.DATA};
-                     Cursor cursor = getActivity().getContentResolver().query(selectedImage,fileColumnPath,null,null,null);
+//                     String [] fileColumnPath = {MediaStore.Images.Media.DATA};
+//                     Cursor cursor = getActivity().getContentResolver().query(selectedImage,fileColumnPath,null,null,null);
+//
+//                     cursor.moveToFirst();
+//                     int columnIndex = cursor.getColumnIndex(fileColumnPath[0]);
+//                     String picturePath = cursor.getString(columnIndex);
+//                     Log.i("picturePath",picturePath);
+//
+//                     cursor.close();
+                     receivedImageBitmap = BitmapFactory.
+                             decodeStream(getActivity().
+                                     getContentResolver().openInputStream(selectedImage));
 
-                     cursor.moveToFirst();
-                     int columnIndex = cursor.getColumnIndex(fileColumnPath[0]);
-                     String picturePath = cursor.getString(columnIndex);
-                     cursor.close();
-                     Bitmap receivedImageBitmap = BitmapFactory.decodeFile(picturePath);
+
                      imgShare.setImageBitmap(receivedImageBitmap);
 
 
